@@ -7,24 +7,53 @@ import java.util.Arrays;
  */
 public class InsertSort {
 
-    public static int [] insertSort(int [] data){
+    /**
+     * 错误的排序方法
+     * @param data
+     * @return
+     */
+    @Deprecated
+    public static int[] insertSort(int[] data) {
         for (int i = 0; i < data.length; i++) {
             int j = i - 1;
             int value = data[i];
             for (; j >= 0; j--) {
-                if(value < data[j]){
-                    data[j+1] = data[j];
+                if (value < data[j]) {
+                    data[j + 1] = data[j];
                 }
             }
-            data[j+1] = value;
+            data[j + 1] = value;
+        }
+        return data;
+    }
+
+    /**
+     * 插入排序
+     * @param data
+     * @return
+     */
+    public static int[] insertSort2(int[] data) {
+        for (int i = 0; i < data.length; i++) {
+            boolean isSort = false;
+            int exchangeVal = data[i];
+            int j = i - 1;
+            for (; j >= 0; j--) {
+                //goback
+                if (data[j] > exchangeVal) {
+                    isSort = true;
+                    data[j + 1] = data[j];
+                }
+            }
+            if(isSort){
+                data[j + 1] = exchangeVal;
+            }
         }
         return data;
     }
 
     public static void main(String[] args) {
-        int [] data = {4,2,6,7};
-        insertSort(data);
-        Arrays.stream(data).asLongStream().forEach(value -> System.out.println(value));
+        int[] data = {5, 4, 2, 6, 7, 1};
+        Arrays.stream(insertSort2(data)).asLongStream().forEach(value -> System.out.println(value));
     }
 
 }
