@@ -62,6 +62,24 @@ public class ChooseSort {
         return data;
     }
 
+    public static int[] chooseSort4(int[] data) {
+        for (int i = 0; i < data.length; i++) {
+            int mix = i;
+            for (int j = i; j < data.length; j++) {
+                if(data[j] < data[mix]){
+                    j = mix;
+                }
+            }
+            //swap
+            if(mix != i){
+                int temp = data[mix];
+                data[mix] = data[i];
+                data[i] = temp;
+            }
+        }
+        return data;
+    }
+
     public static void main(String[] args) {
         int[] data = {5, 2, 3, 4, 1, 67};
         Arrays.stream(chooseSort3(data)).asLongStream().forEach(d -> {

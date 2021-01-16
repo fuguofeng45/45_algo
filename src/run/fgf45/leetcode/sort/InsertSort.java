@@ -42,6 +42,8 @@ public class InsertSort {
                 if (data[j] > exchangeVal) {
                     isSort = true;
                     data[j + 1] = data[j];
+                } else {
+                    break;
                 }
             }
             if(isSort){
@@ -52,7 +54,7 @@ public class InsertSort {
     }
 
     public static void main(String[] args) {
-        int[] data = {5, 4, 2, 6, 7, 1};
+        int[] data = {1, 2, 3, 4, 5, 6, 7, 8, 9, 0};
         Arrays.stream(insertSort2(data)).asLongStream().forEach(value -> System.out.println(value));
     }
 

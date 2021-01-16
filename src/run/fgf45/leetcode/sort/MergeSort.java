@@ -13,13 +13,14 @@ public class MergeSort {
 
     public static void mergeSortInternally(int [] data, int left, int right){
         if(left >= right){
+            System.out.println(data[left]);
             return;
         }
         int middle = left + (right - left) / 2;
         mergeSortInternally(data, left, middle);
         mergeSortInternally(data, middle + 1, right);
 
-        mergeSort(data, left, middle, right);
+        //mergeSort(data, left, middle, right);
     }
 
     public static void mergeSort(int [] data, int left, int middle, int right){
@@ -48,9 +49,9 @@ public class MergeSort {
     public static void main(String[] args) {
         int [] data = {1,3,5,6,4,2,9,0,8,745432123};
         mergeSort(data);
-        Arrays.stream(data).asLongStream().forEach(d -> {
+        /*Arrays.stream(data).asLongStream().forEach(d -> {
             System.out.println(d);
-        });
+        });*/
     }
 
 }
